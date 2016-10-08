@@ -22,7 +22,13 @@
 
 #### Attach persistent/shared directories
 
-    docker run -d -p 8080:8080 -v <liferay-data-dir>:/opt/liferay-portal-tomcat-6.1.2-ce-ga3/data \
+Assuming the tomcat user and group exist on the host and have rw/ro permissions to the volumes:
+
+    docker run -d -p 8080:8080 \
+		-e LOCAL_USER_ID=$(id -u tomcat) \
+		-e GROUP_USER_ID=$(id -g tomcat) \
+		-v <liferay-etc-dir>:/etc/liferay-portal-tomcat-6.1.2-ce-ga3 \
+		-v <liferay-data-dir>:/opt/liferay-portal-tomcat-6.1.2-ce-ga3/data \
 		-v <liferay-deploy-dir>:/opt/liferay-portal-tomcat-6.1.2-ce-ga3/deploy \
 		-v <liferay-log-dir>:/opt/liferay-portal-tomcat-6.1.2-ce-ga3/logs \
 		-v <tomcat-conf-dir>:/opt/liferay-portal-tomcat-6.1.2-ce-ga3/tomcat-7.0.40/conf:ro \

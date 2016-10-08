@@ -10,13 +10,10 @@ for ($i=0; $i<scalar @lines;++$i) {
   if(@lines[$i] =~ /catalina\.out/) {
     for($j = $i-1;;++$j) {
       if($j == $i-1) {
-	print "will strip bs from $j\n";
         @lines[$j] =~ s/\\ *$//;
       } elsif(@lines[$j] !~ /^el/) {
         @lines[$j] = "";
-	print "will blank $j\n";
       } else {
-	print "will break $j\n";
         last;
       }
     }
