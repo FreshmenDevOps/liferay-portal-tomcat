@@ -5,12 +5,16 @@
 # fallback
 
 USER_ID=${LOCAL_USER_ID:-492}
-GROUP_ID=${GROUP_USER_ID:-491}
+GROUP_ID=${LOCAL_GROUP_ID:-491}
 USER_NAME="tomcat"
 
-echo "Changing to UID: $USER_ID GID: $GROUP_ID for $USER_NAME"
-usermod -u $USER_ID $USER_NAME
-groupmod -g $GROUP_ID $USER_NAME
+if (( $USER_ID < 1 || $GROUP_ID < 1 )); then
+  echo "Skipping UID: $USER_ID GID: $GROUP_ID change for $USER_NAME"
+else
+  echo "Changing to UID: $USER_ID GID: $GROUP_ID for $USER_NAME"
+  usermod -u $USER_ID $USER_NAME
+  groupmod -g $GROUP_ID $USER_NAME
+fi
 
 exec /usr/local/bin/gosu tomcat "$@"
 
