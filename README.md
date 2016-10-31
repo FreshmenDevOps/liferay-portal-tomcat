@@ -1,6 +1,6 @@
 ## Liferay Portal Tomcat (6.1.2-ce-ga3)
 
-[Liferay](https://www.liferay.com/) [Tomcat bundle](https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.2%20GA3/)
+[Liferay](https://www.liferay.com/) [Tomcat bundle](https://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.2%20GA3/) using [openSUSE build](https://build.opensuse.org/package/show/home:FreshmenDevOps/liferay-portal-tomcat-6.1.2-ce-ga3)
 
 ### Base Docker Image
 
