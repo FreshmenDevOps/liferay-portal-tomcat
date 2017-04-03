@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-$file = '/usr/sbin/dliferay-portal-tomcat-7.0.2-ce-ga3';
+$file = '/usr/sbin/dliferay-portal-tomcat-6.2.5-ce-ga6';
 
 open $fh, '+<:encoding(UTF-8)', $file;
 

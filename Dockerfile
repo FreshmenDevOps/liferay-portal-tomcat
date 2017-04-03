@@ -20,7 +20,7 @@ RUN yum-config-manager --add-repo \
 		java-1.8.0-openjdk-headless \
 		javapackages-tools \
 		tomcat-native \
-		liferay-portal-tomcat-7.0.2-ce-ga3 && \
+		liferay-portal-tomcat-6.2.5-ce-ga6 && \
 	perl tomcat-foreground.pl && \
 	rm /tomcat-foreground.pl && \
 	yum remove --quiet --assumeyes perl && \
@@ -38,29 +38,26 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-ENV TOMCAT_MAJOR_VERSION 8
-ENV TOMCAT_MINOR_VERSION 8.0.32
+ENV TOMCAT_MAJOR_VERSION 7
+ENV TOMCAT_MINOR_VERSION 7.0.62
 ENV GOSU_VERSION 1.10
 
-ENV LIFERAY_VERSION 7.0.2-ce-ga3
+ENV LIFERAY_VERSION 6.2.5-ce-ga6
 
-VOLUME ["/etc/liferay-portal-tomcat-7.0.2-ce-ga3",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/data",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/deploy",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/logs",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/osgi",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tools",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/work",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tomcat-8.0.32/conf",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tomcat-8.0.32/logs",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tomcat-8.0.32/temp",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tomcat-8.0.32/webapps",\
-	"/opt/liferay-portal-tomcat-7.0.2-ce-ga3/tomcat-8.0.32/work"]
+VOLUME ["/etc/liferay-portal-tomcat-6.2.5-ce-ga6/",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/data",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/deploy",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/logs",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/tomcat-7.0.62/conf",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/tomcat-7.0.62/logs",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/tomcat-7.0.62/temp",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/tomcat-7.0.62/webapps",\
+	"/opt/liferay-portal-tomcat-6.2.5-ce-ga6/tomcat-7.0.62/work"]
 
 # align UID and GID to gain VOLUME rw access, then gosu tomcat
 #USER tomcat
-WORKDIR /opt/liferay-portal-tomcat-7.0.2-ce-ga3
+WORKDIR /opt/liferay-portal-tomcat-6.2.5-ce-ga6
 
-CMD ["/usr/sbin/dliferay-portal-tomcat-7.0.2-ce-ga3", "start"]
+CMD ["/usr/sbin/dliferay-portal-tomcat-6.2.5-ce-ga6", "start"]
 
 EXPOSE 8080
